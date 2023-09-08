@@ -1,0 +1,39 @@
+
+ retrive baket content:
+
+const pantry = require('pantry-node')
+
+const pantryID = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
+const pantryClient = new pantry(pantryID)
+const options = { parseJSON: true } // optional
+
+pantryClient.basket
+  .get('ToDoList', options)
+  .then((contents) => console.log(contents))
+
+
+// update basket content:
+const pantry = require('pantry-node')
+
+const pantryID = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
+const pantryClient = new pantry(pantryID)
+const options = { parseJSON: true } // optional
+
+// The new payload that you want your basket to have
+const payload = {
+  pending: ["Walk the Dog"]
+}
+
+pantryClient.basket
+  .update('ToDoList', payload, options)
+  .then((response) => console.log(response))
+
+//delete a basket:
+const pantry = require('pantry-node')
+
+const pantryID = "xxxx-xxxx-xxxx-xxxx-xxxx-xxxx"
+const pantryClient = new pantry(pantryID)
+
+pantryClient.basket
+  .delete('ToDoList')
+  .then((response) => console.log(response))
